@@ -5,7 +5,7 @@ informacja_o_bledzie: .asciiz "\n Ajjj podales zlo cyfra"
 informacja_o_koniecznoœci_wprowadzenia_wartosci_liczbowej: .asciiz "\n Wprowadz wartosc cyfrowa kamracie"
 aktualny_stos: "\n Terozny twoj sztapel kamracie prezyntuje sie nastepujaco: "
 spacja: .asciiz " "
-wyœwietlenie_wyniku: .asciiz  "\n Jo zech porachowa³ kamracie: "
+wyœwietlenie_wyniku: .asciiz  "\n Jo zech porachowal kamracie: "
 informacja_o_niemo¿liwoœci_wykonania: .asciiz "\n Potrzebujesz wiecej numerow by wykonac ta operacje"
 informacja_o_pustym_stosie: .asciiz "\n Kamracie niy mosz ju¿ czego zdjac ze sztapla :("
 informacja_o_za_wielkiej_ilosci_elementow: .asciiz "\n Na sztaplu musi byc ino jedyn elymynt!"
@@ -75,8 +75,8 @@ Wykonanie_operacji_znakowej:
 printString(pytanie2)
 get_input($t2)
 empty()
-empty()
 pop($t3)
+empty()
 pop($t5)
 beq $t2,0,dodawanie
 beq $t2,1,odejmowanie
@@ -92,7 +92,7 @@ jal drukowanie_stosu_cz1
 j main
 
 odejmowanie:
-sub $t4,$t5,$t3
+sub $t4,$t3,$t5
 push($t4)
 jal drukowanie_stosu_cz1
 j main
@@ -113,7 +113,7 @@ j main
 
 stos_pusty:
 printString(informacja_o_pustym_stosie)
-b Zakonczenie_programu_cz2
+b main
 Zakonczenie_programu_cz1:
 one_element()
 printString(wyœwietlenie_wyniku)
